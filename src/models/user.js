@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     age: {
         type: String,
         trim: true,
-        default: 0,
+        default: 20,
         validate: {
             validator: (v) => valiDator.isInt(v, {gt: 0}),
             message: 'Age should be greater than 0'

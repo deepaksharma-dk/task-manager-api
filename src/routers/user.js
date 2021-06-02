@@ -16,7 +16,7 @@ router.post('/users', async (req, res) => {
         res.status(201).send({user, token})
     } catch(e) {
         console.log(e)
-        res.status(500).send(e.stack)
+        res.status(500).send(e)
     }
 })
 
@@ -75,7 +75,7 @@ router.patch('/users/me', auth, async (req, res) => {
     try {
         updates.forEach((update) =>  req.user[update] = req.body[update])
         
-        await req.user.save()        
+        await req.user.save()
         res.send(req.user)
     } catch (e) {
         res.status(400).send(e.toString())
